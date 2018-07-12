@@ -14,7 +14,7 @@ table = []
     links = page.css("a[class = lientxt]")
     links.each{|link|
         lien = link['href']
-        lien[0] = ''
+        # lien[0] = ''
     table  <<  "http://annuaire-des-mairies.com#{lien}"
 }
 table
@@ -27,7 +27,7 @@ tab = get_all_the_urls_of_val_doise_townhalls
 
 tab.each do |lien| 
 	doc = Nokogiri::HTML(open(lien))
- 		puts doc.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]').text
+ 		doc.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]').text
 
 
 	end
@@ -46,7 +46,7 @@ def nom
    links = page.css("a[class = lientxt]")
    links.each do |nom| 
 
-table << nom 
+table << nom.text
 
    end
 
@@ -59,13 +59,8 @@ def final
 
 
 
-a = nom
-b = mail
 
-a.zip(b)
-
-
-puts a
+array = Hash[nom.zip(mail)]
 
 
 end
